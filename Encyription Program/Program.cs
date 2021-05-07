@@ -19,9 +19,12 @@ namespace Encryption_Program
 
         static void Run()
         {
-            Encryption a = new Encryption("aa", "Dangerous DONOTUSE");
-            Console.WriteLine(a.Encrypt());
-            Console.WriteLine(a.Decrypt());
+            Encryption a = new Encryption("Merhaba", "Dangerous DONOTUSE");
+            string b = "asdf asdf";
+            string c = "";
+            Console.WriteLine(string.Compare(b, c));
+
+            
         }
     }
 }

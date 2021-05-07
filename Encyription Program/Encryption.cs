@@ -8,14 +8,17 @@ using System.IO;
 
 namespace Encryption_Program
 {
-    class Encryption
+    public class Encryption
     {
         public string sentence;
         private string language;
+
         private string[] encrypt_keys = new string[0];
         private string[] encrypt_values = new string[0];
         private string[] decrypt_keys = new string[0];
         private string[] decrypt_values = new string[0];
+
+        private bool dictloaded;
         public Encryption(string Asentence, string Alanguage)
         {
             sentence = Asentence;
@@ -23,7 +26,7 @@ namespace Encryption_Program
             LoadLang();
         }
 
-        public void LoadLang()
+        private void LoadLang()
         {
             string path = "Dicts/" + language + ".txt";
             if (File.Exists(path))
@@ -92,15 +95,22 @@ namespace Encryption_Program
                         }
                     }
                 }
+                dictloaded = true;
             }
             else
             {
                 Console.WriteLine("Language file not found");
+                dictloaded = false;
             }
         }
 
         public string Encrypt()
         {
+            if (!dictloaded)
+            {
+                return "Dictionary not loaded";
+            }
+
             string encrypted = "";
             for (int i = 0; i < sentence.Length; i++)
             {
@@ -134,6 +144,11 @@ namespace Encryption_Program
 
         public string Decrypt()
         {
+            if (!dictloaded)
+            {
+                return "Dictionary not loaded";
+            }
+
             string encrypted = "";
             for (int i = 0; i < sentence.Length; i++)
             {
