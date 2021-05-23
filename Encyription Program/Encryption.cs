@@ -12,6 +12,7 @@ namespace Encryption_Program
     {
         public string sentence;
         private string language;
+        private int last_errors;
 
         private string[] encrypt_keys = new string[0];
         private string[] encrypt_values = new string[0];
@@ -26,13 +27,27 @@ namespace Encryption_Program
             LoadLang();
         }
 
+        public Encryption(string Asentence)
+        {
+            sentence = Asentence;
+            try
+            {
+                language = ScanLang()[0];
+            }
+            catch
+            {
+                language = null;
+            }
+            LoadLang();
+        }
+
         private void LoadLang()
         {
             string path = "Dicts/" + language + ".txt";
             if (File.Exists(path))
             {
                 string[] lines = File.ReadAllLines(path, Encoding.UTF8);
-                string[] passes = new string[lines.Length*2];
+                string[] passes = new string[lines.Length * 2];
                 Array.Clear(encrypt_keys, 0, encrypt_keys.Length);
                 Array.Clear(encrypt_values, 0, encrypt_values.Length);
                 Array.Clear(decrypt_keys, 0, decrypt_keys.Length);
@@ -47,8 +62,8 @@ namespace Encryption_Program
                 foreach (string line in lines)
                 {
                     string[] vs1 = line.Split(' ');
-                    passes[i*2] = vs1[0];
-                    passes[i*2+1] = vs1[1];
+                    passes[i * 2] = vs1[0];
+                    passes[i * 2 + 1] = vs1[1];
                     vs[i] = vs1[0].Length;
                     i++;
                 }
@@ -56,20 +71,20 @@ namespace Encryption_Program
                 Array.Reverse(vs);
 
                 byte a = 0;
-                foreach(int len in vs)
+                foreach (int len in vs)
                 {
-                    for (i = 0; i < passes.Length/2; i++)
+                    for (i = 0; i < passes.Length / 2; i++)
                     {
-                        if (passes[i*2].Length == len && !encrypt_keys.Contains(passes[i*2]))
+                        if (passes[i * 2].Length == len && !encrypt_keys.Contains(passes[i * 2]))
                         {
                             encrypt_keys[a] = passes[i * 2];
                             encrypt_values[a] = passes[i * 2 + 1];
                             a++;
                         }
-                        
+
                     }
                 }
-                Array.Clear(passes,0,passes.Length);
+                Array.Clear(passes, 0, passes.Length);
                 Array.Clear(vs, 0, vs.Length);
                 i = 0;
                 foreach (string line in lines)
@@ -87,7 +102,7 @@ namespace Encryption_Program
                 {
                     for (i = 0; i < passes.Length / 2; i++)
                     {
-                        if (passes[i * 2+1].Length == len && !decrypt_values.Contains(passes[i * 2]))
+                        if (passes[i * 2 + 1].Length == len && !decrypt_values.Contains(passes[i * 2]))
                         {
                             decrypt_keys[a] = passes[i * 2 + 1];
                             decrypt_values[a] = passes[i * 2];
@@ -104,6 +119,17 @@ namespace Encryption_Program
             }
         }
 
+        public string[] ScanLang()
+        {
+            string[] raw = Directory.GetFiles("./Dicts");
+            string[] dicts = new string[raw.Length];
+
+            for (int i = 0; i < raw.Length; i++)
+            {
+                dicts[i] = Path.GetFileNameWithoutExtension(raw[i]);
+            }
+            return dicts;
+        }
         public string Encrypt()
         {
             if (!dictloaded)
@@ -111,6 +137,7 @@ namespace Encryption_Program
                 return "Dictionary not loaded";
             }
 
+            last_errors = 0;
             string encrypted = "";
             for (int i = 0; i < sentence.Length; i++)
             {
@@ -136,9 +163,9 @@ namespace Encryption_Program
                 {
                     Console.WriteLine("Çevirilemedi {0}", sentence[i]);
                     encrypted += "µ";
+                    last_errors += 1;
                 }
             }
-            sentence = encrypted;
             return encrypted;
         }
 
@@ -149,6 +176,7 @@ namespace Encryption_Program
                 return "Dictionary not loaded";
             }
 
+            last_errors = 0;
             string encrypted = "";
             for (int i = 0; i < sentence.Length; i++)
             {
@@ -173,15 +201,15 @@ namespace Encryption_Program
                 {
                     Console.WriteLine("Çevirilemedi {0} index {1}", sentence[i], i);
                     encrypted += "µ";
+                    last_errors += 1;
                 }
             }
-            sentence = encrypted;
             return encrypted;
         }
 
         public void ChangeDict(string new_dict)
         {
-            if(File.Exists("Dicts/" + new_dict + ".txt"))
+            if (File.Exists("Dicts/" + new_dict + ".txt"))
             {
                 language = new_dict;
                 LoadLang();
@@ -190,6 +218,32 @@ namespace Encryption_Program
             {
                 Console.WriteLine("Geçersiz");
             }
+        }
+
+        public int LastErrors
+        {
+            get { return last_errors; }
+        }
+
+        public string Language
+        {
+            get { return language; }
+        }
+
+        public string Find()
+        {
+            string old_dict = Language;
+            foreach (string dict in ScanLang())
+            {
+                ChangeDict(dict);
+                string decrypted = Decrypt();
+                if (last_errors == 0)
+                {
+                    return Language;
+                }
+            }
+            ChangeDict(old_dict);
+            return null;
         }
     }
 }

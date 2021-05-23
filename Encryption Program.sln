@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryption Program", "Encyription Program\Encryption Program.csproj", "{2670348C-8271-43B6-9828-AAF4272C4FEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryption Program Interface", "Encryption Program Interface\Encryption Program Interface.csproj", "{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encryption Program Interface", "Encryption Program Interface\Encryption Program Interface.csproj", "{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2670348C-8271-43B6-9828-AAF4272C4FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2670348C-8271-43B6-9828-AAF4272C4FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2670348C-8271-43B6-9828-AAF4272C4FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2670348C-8271-43B6-9828-AAF4272C4FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2670348C-8271-43B6-9828-AAF4272C4FEC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2670348C-8271-43B6-9828-AAF4272C4FEC}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU

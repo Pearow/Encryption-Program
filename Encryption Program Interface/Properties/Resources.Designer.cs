@@ -59,15 +59,5 @@ namespace Encryption_Program_Interface.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _2019_12_14 {
-            get {
-                object obj = ResourceManager.GetObject("2019-12-14", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

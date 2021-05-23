@@ -19,10 +19,8 @@ namespace Encryption_Program
 
         static void Run()
         {
-            Encryption a = new Encryption("Merhaba", "Dangerous DONOTUSE");
-            string b = "asdf asdf";
-            string c = "";
-            Console.WriteLine(string.Compare(b, c));
+            Encryption a = new Encryption("Megerhagabaga");
+            Console.WriteLine(a.Find());
 
             
         }

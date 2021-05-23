@@ -5,6 +5,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Encryption_Program_Interface</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject></StartupObject>
+    <AssemblyName>Encryption Program Interface</AssemblyName>
+    <Version>0.9.0</Version>
+    <Authors>Pearow</Authors>
+    <Copyright>No Copyright</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <AssemblyVersion>0.9.0.0</AssemblyVersion>
+    <FileVersion>0.9.0.0</FileVersion>
+    <Product>Encryption Program</Product>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +27,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +39,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

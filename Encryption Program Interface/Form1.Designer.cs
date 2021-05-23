@@ -29,12 +29,17 @@ namespace Encryption_Program_Interface
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.outputLabel = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.encryptButton = new System.Windows.Forms.RadioButton();
             this.decryptButton = new System.Windows.Forms.RadioButton();
-            this.dictLabel = new System.Windows.Forms.Label();
+            this.copylabel = new System.Windows.Forms.Label();
+            this.labelofftimer = new System.Windows.Forms.Timer(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.main_panel = new System.Windows.Forms.Panel();
+            this.outputLabel = new System.Windows.Forms.Label();
+            this.main_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -46,20 +51,9 @@ namespace Encryption_Program_Interface
             this.textBox1.Location = new System.Drawing.Point(12, 158);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(508, 23);
+            this.textBox1.Size = new System.Drawing.Size(520, 23);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // outputLabel
-            // 
-            this.outputLabel.BackColor = System.Drawing.Color.Transparent;
-            this.outputLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.outputLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.outputLabel.Location = new System.Drawing.Point(12, 9);
-            this.outputLabel.Name = "outputLabel";
-            this.outputLabel.Size = new System.Drawing.Size(508, 135);
-            this.outputLabel.TabIndex = 1;
-            this.outputLabel.Text = "Output";
             // 
             // checkBox1
             // 
@@ -68,12 +62,13 @@ namespace Encryption_Program_Interface
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.checkBox1.Location = new System.Drawing.Point(466, 187);
+            this.checkBox1.Location = new System.Drawing.Point(478, 187);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(54, 19);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "Copy";
             this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // encryptButton
             // 
@@ -86,6 +81,7 @@ namespace Encryption_Program_Interface
             this.encryptButton.TabStop = true;
             this.encryptButton.Text = "Encrypt";
             this.encryptButton.UseVisualStyleBackColor = true;
+            this.encryptButton.CheckedChanged += new System.EventHandler(this.encryptButton_CheckedChanged);
             // 
             // decryptButton
             // 
@@ -96,33 +92,81 @@ namespace Encryption_Program_Interface
             this.decryptButton.TabIndex = 4;
             this.decryptButton.Text = "Decrypt";
             this.decryptButton.UseVisualStyleBackColor = true;
+            this.decryptButton.CheckedChanged += new System.EventHandler(this.decryptButton_CheckedChanged);
             // 
-            // dictLabel
+            // copylabel
             // 
-            this.dictLabel.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dictLabel.Location = new System.Drawing.Point(0, 269);
-            this.dictLabel.Name = "dictLabel";
-            this.dictLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dictLabel.Size = new System.Drawing.Size(531, 13);
-            this.dictLabel.TabIndex = 5;
-            this.dictLabel.Text = "Dictionary";
+            this.copylabel.AutoSize = true;
+            this.copylabel.BackColor = System.Drawing.Color.Transparent;
+            this.copylabel.Font = new System.Drawing.Font("Segoe UI", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.copylabel.ForeColor = System.Drawing.Color.Lime;
+            this.copylabel.Location = new System.Drawing.Point(126, 184);
+            this.copylabel.Name = "copylabel";
+            this.copylabel.Size = new System.Drawing.Size(266, 96);
+            this.copylabel.TabIndex = 6;
+            this.copylabel.Text = "Copied";
+            this.copylabel.Visible = false;
+            // 
+            // labelofftimer
+            // 
+            this.labelofftimer.Interval = 700;
+            this.labelofftimer.Tick += new System.EventHandler(this.labelofftimer_Tick);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(421, 257);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // main_panel
+            // 
+            this.main_panel.AutoScroll = true;
+            this.main_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.main_panel.Controls.Add(this.outputLabel);
+            this.main_panel.Location = new System.Drawing.Point(12, 12);
+            this.main_panel.MaximumSize = new System.Drawing.Size(580, 4);
+            this.main_panel.MinimumSize = new System.Drawing.Size(520, 140);
+            this.main_panel.Name = "main_panel";
+            this.main_panel.Size = new System.Drawing.Size(520, 140);
+            this.main_panel.TabIndex = 8;
+            // 
+            // outputLabel
+            // 
+            this.outputLabel.AutoSize = true;
+            this.outputLabel.BackColor = System.Drawing.Color.Transparent;
+            this.outputLabel.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.outputLabel.Location = new System.Drawing.Point(0, 0);
+            this.outputLabel.MaximumSize = new System.Drawing.Size(495, 140);
+            this.outputLabel.Name = "outputLabel";
+            this.outputLabel.Size = new System.Drawing.Size(45, 15);
+            this.outputLabel.TabIndex = 1;
+            this.outputLabel.Text = "Output";
+            this.outputLabel.DoubleClick += new System.EventHandler(this.outputLabel_DoubleClick);
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(532, 284);
-            this.Controls.Add(this.dictLabel);
+            this.ClientSize = new System.Drawing.Size(544, 281);
+            this.Controls.Add(this.main_panel);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.copylabel);
             this.Controls.Add(this.decryptButton);
             this.Controls.Add(this.encryptButton);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.textBox1);
+            this.MinimumSize = new System.Drawing.Size(560, 320);
             this.Name = "Form1";
             this.Text = "Encryption Program";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.main_panel.ResumeLayout(false);
+            this.main_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,11 +175,14 @@ namespace Encryption_Program_Interface
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label outputLabel;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.RadioButton encryptButton;
         private System.Windows.Forms.RadioButton decryptButton;
-        private System.Windows.Forms.Label dictLabel;
+        private System.Windows.Forms.Label copylabel;
+        private System.Windows.Forms.Timer labelofftimer;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Panel main_panel;
+        private System.Windows.Forms.Label outputLabel;
     }
 }
 
