@@ -132,6 +132,7 @@ namespace Encryption_Program_Interface
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(520, 140);
             this.main_panel.TabIndex = 8;
+            this.main_panel.DoubleClick += new System.EventHandler(this.outputLabel_DoubleClick);
             // 
             // outputLabel
             // 
