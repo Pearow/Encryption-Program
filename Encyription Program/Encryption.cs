@@ -243,7 +243,7 @@ namespace Encryption_Program
                 }
             }
             ChangeDict(old_dict);
-            return null;
+            return old_dict;
         }
     }
 }

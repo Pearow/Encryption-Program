@@ -34,7 +34,7 @@ namespace Encryption_Program_Interface
             else
             {
                 output = encrypter.Decrypt();
-                if (encrypter.LastErrors > 0 && encrypter.Find() != null)
+                if (encrypter.LastErrors > 0)
                 {
                     comboBox1.SelectedItem = encrypter.Find();
                     output = encrypter.Decrypt();

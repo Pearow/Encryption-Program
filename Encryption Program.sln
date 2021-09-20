@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryption Program", "Encyr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encryption Program Interface", "Encryption Program Interface\Encryption Program Interface.csproj", "{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Secret Di", "Secret Di\Secret Di.csproj", "{10B12FB1-8A18-4BE9-9A29-4C4533E8D3B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{987D5255-1EAE-4E9F-A9B6-0D6FA41F7EDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B12FB1-8A18-4BE9-9A29-4C4533E8D3B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B12FB1-8A18-4BE9-9A29-4C4533E8D3B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B12FB1-8A18-4BE9-9A29-4C4533E8D3B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B12FB1-8A18-4BE9-9A29-4C4533E8D3B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
